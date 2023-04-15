@@ -1,0 +1,100 @@
+﻿<Window x:Class="WpfApp15.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp15"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="720" MinWidth="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <ListView Name="LvSotr">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border BorderBrush="Black" BorderThickness="2" Padding="0"  >
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="190" Width="450">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Margin="5">
+                                            <TextBlock Grid.Row="0">
+                                                <Run Text="Сотрудник: "/>
+                                            <Run Text="{Binding FIO, Mode=OneWay}"/>
+                                                
+                                            </TextBlock>
+                                            <TextBlock>
+                                            <Run Text="Должность: "/>
+                                            <Run Text="{Binding DoljnNavigation.Doljns}"/>
+                                            </TextBlock>
+                                            <TextBlock  >
+                                            <Run Text="Зона активности: "/>
+                                            <Run Text="{Binding ZonaNavigation.Zona1}"/>
+                                            </TextBlock>
+                                            <TextBlock  >
+                                            <Run Text="Смена: "/>
+                                            <Run Text="{Binding SmenaNavigation.Type}">
+                                                <Run.Style>
+                                                    <Style TargetType="Run">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding SmenaNavigation.Type}" Value="1 Смена">
+                                                                <Setter Property="Foreground" Value="Blue"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding SmenaNavigation.Type}" Value="2 Смена">
+                                                                <Setter Property="Foreground" Value="Green"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Run.Style>
+                                            </Run>
+                                            </TextBlock>
+                                        </StackPanel>
+                                        <Grid Grid.Row="1" Grid.Column="0" Margin="5">
+                                            <Border BorderBrush="Black" BorderThickness="2" Padding="0">
+                                                <StackPanel Orientation="Vertical">
+                                                    <TextBlock Text="Дата выплаты аванса: " />
+                                                    <TextBlock Text="Дата выплаты зарплаты: " />
+                                                    <TextBlock Text="Сумма аванса: " />
+                                                    <TextBlock Text="Сумма зарплата: " />
+                                                    <TextBlock Text="Стимулирующие выплаты: " />
+                                                    <TextBlock Text="Штрафы: " />
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                        <Grid Grid.RowSpan="2" Grid.Column="1" Margin="5">
+                                            <Border BorderThickness="2" BorderBrush="Black" Padding="0">
+                                                <TextBlock Text="Фото" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </Grid>
+                                </StackPanel>
+                                
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Button Grid.Row="2" Content="Данные" Click="BtInfoClick" Name="BtInfo" />
+    </Grid>
+</Window>
