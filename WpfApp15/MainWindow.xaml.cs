@@ -20,7 +20,11 @@ namespace WpfApp15
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    { 
+        private void UpdateData()
+        {
+            LvSotr.ItemsSource = EfModel.Init().Sotrudnikis.Include(d => d.DoljnNavigation).Include(s => s.SmenaNavigation).Include(t => t.TipStavkiNavigation).Include(z => z.ZonaNavigation).ToList();
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -28,12 +32,20 @@ namespace WpfApp15
 
         private void BtInfoClick(object sender, RoutedEventArgs e)
         {
-            LvSotr.ItemsSource = EfModel.Init().Sotrudnikis.Include(d => d.DoljnNavigation).Include(s=>s.SmenaNavigation).Include(t=>t.TipStavkiNavigation).Include(z=>z.ZonaNavigation).ToList();
+            UpdateData();
         }
 
         private void BtUserClick(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void TbSearch_TextShanged(object sender, TextChangedEventArgs e)
+        {
+           //if (LvSotr != null)
+           // {
+           //     LvSotr.ItemsSource = EfModel.Init().Sotrudnikis.Where(s => s.FIO.Contains(TbSearch.Text.ToString())).ToList();
+           // }
         }
     }
 }

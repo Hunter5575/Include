@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp15"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="720" MinWidth="1024">
+        Title="MainWindowff" MinHeight="720" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <TextBox Name="TbSearch" Grid.Row="0" TextChanged="TbSearch_TextShanged" Background="Bisque"/>
         <Grid Grid.Row="1">
             <ListView Name="LvSotr">
                 <ListView.ItemsPanel>
